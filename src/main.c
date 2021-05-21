@@ -59,7 +59,7 @@ int main(int argc, char** argv)
 			{0x69F7, 0x0616, 0xCF70, 0xA87B, 0x204B, 0xF042, 0x34A4, 0xE8FB},
 			{0x78AA, 0xE402, 0x87BC, 0xBCF8, 0x29F2, 0x1B57, 0xA548, 0x49FF},
 			{0xA84C, 0xB68B, 0xB4E1, 0xB536, 0xE507, 0x98D0, 0xBEE9, 0x5BBD},
-			{0x99E3, 0xA4B6, 0x3674, 0x04E0, 0x284B, 0x9FE7, 0xE246, 0x6fAA},
+			{0x99E3, 0xA4B6, 0x3674, 0x04E0, 0x284B, 0x9FE7, 0xE246, 0x6FAA},
 			{0xCB2F, 0x8DF7, 0xA84A, 0x6E1E, 0x9C4D, 0x69D8, 0x0B5D, 0x29D4}
 	};
 	//crack_hash(2, hash_msg[0]);
@@ -70,7 +70,14 @@ int main(int argc, char** argv)
 	//crack_threads(3,  hash_msg[1]);
 	//crack_threads(4,  hash_msg[2]);
 	//crack_threads(5,  hash_msg[3]);
-	crack_threads(6,  hash_msg[4]);
+	//crack_threads(6,  hash_msg[4]);
+
+	char* msg = ")T3YMM";
+	uint16_t* hash_res = hash((uint8_t*) msg, strlen(msg));
+	for(int i=0; i<8; i++)
+		printf("%04X", hash_res[i]);
+	printf("\n");
+
 	return 0;
 }
 
@@ -249,12 +256,12 @@ void* thread_main(void *args)
 	uint8_t* msg = calloc(thread_msg_len + (BLOCK_SIZE - thread_msg_len%BLOCK_SIZE), sizeof(uint8_t));
 
 	msg[thread_msg_len] = 0x80;
-	int limit = pow(ALLOWED_CHARACTERS_SIZE, thread_msg_len)/THREAD_NUM;
+	uint64_t limit = pow(ALLOWED_CHARACTERS_SIZE, thread_msg_len)/THREAD_NUM;
 
-	for(int i=0; i<limit; i++) {
+	for(uint64_t i=0; i<limit; i++) {
 		if(thread_found)
 			break;
-		if(i%100 == 0)
+		if(i%1000000 == 0)
 			printf("%f%%\n", i*100.0/limit);
 		for(int char_index=0; char_index<thread_msg_len; char_index++) {
 			if(msg_chars[char_index] == ALLOWED_CHARACTERS_SIZE) {
