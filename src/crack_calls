@@ -1,0 +1,5 @@
+./pk_sha3 -t 4 -d 2 69 F7 06 16 CF 70 A8 7B 20 4B F0 42 34 A4 E8 FB
+./pk_sha3 -t 4 -d 3 78 AA E4 02 87 BC BC F8 29 F2 1B 57 A5 48 49 FF
+./pk_sha3 -t 4 -d 4 A8 4C B6 8B B4 E1 B5 36 E5 07 98 D0 BE E9 5B BD
+./pk_sha3 -t 4 -d 5 99 E3 A4 B6 36 74 04 E0 28 4B 9F E7 E2 46 6F AA
+./pk_sha3 -t 4 -d 6 CB 2F 8D F7 A8 4A 6E 1E 9C 4D 69 D8 0B 5D 29 D4
