@@ -5,17 +5,6 @@
 #include"sha3.h"
 enum program_mode {Help, Hash, Crack};
 
-void print_matrix(uint16_t matrix[5][5])
-{
-	for(int i=0; i<5; i++) {
-		for(int j=0; j<5; j++) {
-			printf("%04X ", matrix[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n");
-}
-
 void print_help();
 
 int main(int argc, char** argv)

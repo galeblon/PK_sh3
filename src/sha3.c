@@ -15,16 +15,6 @@ char allowed_characters[ALLOWED_CHARACTERS_SIZE] = "qwertyuiopasdfghjklzxcvbnmQW
 
 uint16_t r[10] = {0x2E60, 0xD05E, 0x9266, 0xB6A6, 0x8059, 0x6FDE, 0xF62D, 0x8A86, 0x8C47, 0xD6A4};
 
-// TODO dynamicc
-/*
-#define THREAD_NUM 4
-pthread_t thread[THREAD_NUM];
-pthread_attr_t attr;
-int thread_msg_len = 0;
-uint16_t  thread_hash_msg[8];
-uint8_t* thread_msg_chars[THREAD_NUM];
-int thread_found = 0;
-*/
 pthread_t* thread;
 pthread_attr_t attr;
 uint thread_msg_len = 0;
